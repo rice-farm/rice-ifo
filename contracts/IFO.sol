@@ -1,9 +1,9 @@
 pragma solidity 0.6.12;
 
-import '@pancakeswap/pancake-swap-lib/contracts/math/SafeMath.sol';
-import '@pancakeswap/pancake-swap-lib/contracts/token/BEP20/IBEP20.sol';
-import '@pancakeswap/pancake-swap-lib/contracts/token/BEP20/SafeBEP20.sol';
-import '@pancakeswap/pancake-swap-lib/contracts/utils/ReentrancyGuard.sol';
+import '@pantherswap/panther-swap-lib/contracts/math/SafeMath.sol';
+import '@pantherswap/panther-swap-lib/contracts/token/BEP20/IBEP20.sol';
+import '@pantherswap/panther-swap-lib/contracts/token/BEP20/SafeBEP20.sol';
+import '@pantherswap/panther-swap-lib/contracts/utils/ReentrancyGuard.sol';
 
 contract IFO is ReentrancyGuard {
   using SafeMath for uint256;
