@@ -1,6 +1,6 @@
 {
   "name": "panther-ipo",
-  "description": "Initial panther offering",
+  "description": "Initial Panther Offering",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
