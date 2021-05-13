@@ -5,6 +5,14 @@ import '@pantherswap/panther-swap-lib/contracts/token/BEP20/IBEP20.sol';
 import '@pantherswap/panther-swap-lib/contracts/token/BEP20/SafeBEP20.sol';
 import '@pantherswap/panther-swap-lib/contracts/utils/ReentrancyGuard.sol';
 
+/**
+ * @dev PantherSwap: Initial Panther Offering
+ *
+ * Website: https://pantherswap.com
+ * Dex: https://dex.pantherswap.com
+ * Twitter: https://twitter.com/PantherSwap
+ *
+ */
 contract IPO is ReentrancyGuard {
   using SafeMath for uint256;
   using SafeBEP20 for IBEP20;
