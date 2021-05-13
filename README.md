@@ -1,7 +1,4 @@
-# initial-farm-offering
-
-[![Actions Status](https://github.com/pancakeswap/inital-farm-offering/workflows/CI/badge.svg)](https://github.com/pancakeswap/inital-farm-offering/actions)
-
+# Initial Panther Offering
 
 # Local Development
 

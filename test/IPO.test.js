@@ -1,8 +1,8 @@
 const { expectRevert, time } = require('@openzeppelin/test-helpers');
 const MockBEP20 = artifacts.require('MockBEP20');
-const IFO = artifacts.require('IFO');
+const IPO = artifacts.require('IPO');
 
-contract('IFO', ([alice, bob, carol, dev, minter]) => {
+contract('IPO', ([alice, bob, carol, dev, minter]) => {
   beforeEach(async () => {
     this.lp = await MockBEP20.new('LPToken', 'LP1', '1000000', { from: minter });
     this.ifoToken = await MockBEP20.new('WOW', 'WOW', '1000000', { from: minter });
@@ -14,7 +14,7 @@ contract('IFO', ([alice, bob, carol, dev, minter]) => {
 
   it('raise not enough lp', async () => {
     // 10 lp raising, 100 ifo to offer
-    this.ifo = await IFO.new(this.lp.address, this.ifoToken.address, '20', '30', '100', '10', alice, { from: minter });
+    this.ifo = await IPO.new(this.lp.address, this.ifoToken.address, '20', '30', '100', '10', alice, { from: minter });
     await this.ifoToken.transfer(this.ifo.address, '100', { from: minter });
 
     await this.lp.approve(this.ifo.address, '1000', { from: alice });
@@ -56,7 +56,7 @@ contract('IFO', ([alice, bob, carol, dev, minter]) => {
 
   it('raise enough++ lp', async () => {
     // 10 lp raising, 100 ifo to offer
-    this.ifo = await IFO.new(this.lp.address, this.ifoToken.address, '50', '100', '100', '10', alice, { from: minter });
+    this.ifo = await IPO.new(this.lp.address, this.ifoToken.address, '50', '100', '100', '10', alice, { from: minter });
     await this.ifoToken.transfer(this.ifo.address, '100', { from: minter });
 
     await this.lp.approve(this.ifo.address, '1000', { from: alice });
@@ -108,7 +108,7 @@ contract('IFO', ([alice, bob, carol, dev, minter]) => {
 
   it('raise enough lp', async () => {
     // 10 lp raising, 100 ifo to offer
-    this.ifo = await IFO.new(this.lp.address, this.ifoToken.address, '120', '170', '18', '18', alice, { from: minter });
+    this.ifo = await IPO.new(this.lp.address, this.ifoToken.address, '120', '170', '18', '18', alice, { from: minter });
     await this.ifoToken.transfer(this.ifo.address, '100', { from: minter });
 
     await this.lp.approve(this.ifo.address, '1000', { from: alice });
