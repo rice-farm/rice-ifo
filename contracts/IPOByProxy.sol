@@ -87,7 +87,7 @@ contract IPOByProxy is ReentrancyGuard, Initializable {
   }
 
   function deposit(uint256 _amount) public {
-    require (block.number > startBlock && block.number < endBlock, 'not ifo time');
+    require (block.number > startBlock && block.number < endBlock, 'not ipo time');
     require (_amount > 0, 'need _amount > 0');
     lpToken.safeTransferFrom(address(msg.sender), address(this), _amount);
     if (userInfo[msg.sender].amount == 0) {
