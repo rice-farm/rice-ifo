@@ -14,6 +14,8 @@ import "@ricefarm/rice-lib/contracts/proxy/Initializable.sol";
  * Website: https://ricefarm.fi
  * Dex: https://swap.ricefarm.fi
  * Twitter: https://twitter.com/BobaGroup
+ * Twitter: https://twitter.com/TeslaSafe
+ * Telegram: https://t.me/tesla_safe
  *
  */
 contract IFOByProxy is ReentrancyGuard, Initializable {
