@@ -12,22 +12,22 @@ module.exports = async (deployer) => {
 
   // https://testnet.bscscan.com/block/countdown/9051543
 
-
-  // const lpToken = '0xc9dbefe1179f9bed3a0affaf124c0a641666d1b4'; // ts-bnb cake lp v1
-  // const offeringToken = '0xeA2cE3C20184C1814D372756360F4Be7621A70Bb'; // rice
-  // const startBlock = '9046543';
-  // const endBlock = '9051543';
+  // const lpToken = '0xA527a61703D82139F8a06Bc30097cC9CAA2df5A6';
+  // const offeringToken = '0x009cf7bc57584b7998236eff51b98a168dcea9b0';
+  // const startBlock = '2401192';
+  // const endBlock = '2402392';
   // const offeringAmount = '100';
   // const raisingAmount = '100000';
-  // const adminAddress = '0x87500968B83f3f7091B85ea58dAaBc815935b553'; // dev account
+  // const adminAddress = '0x35f16A46D3cf19010d28578A8b02DfA3CB4095a1';
 
-  const lpToken = '0xA527a61703D82139F8a06Bc30097cC9CAA2df5A6';
-  const offeringToken = '0x009cf7bc57584b7998236eff51b98a168dcea9b0';
-  const startBlock = '2401192';
-  const endBlock = '2402392';
+  const lpToken = '0xc9dbefe1179f9bed3a0affaf124c0a641666d1b4'; // ts-bnb cake lp v1
+  const offeringToken = '0xeA2cE3C20184C1814D372756360F4Be7621A70Bb'; // rice
+  const startBlock = '9046543';
+  const endBlock = '9051543';
   const offeringAmount = '100';
   const raisingAmount = '100000';
-  const adminAddress = '0x35f16A46D3cf19010d28578A8b02DfA3CB4095a1';
+  const adminAddress = '0x87500968B83f3f7091B85ea58dAaBc815935b553'; // dev account
+
   await deployer.deploy(
     IFO,
     lpToken,
