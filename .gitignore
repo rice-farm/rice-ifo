@@ -1,3 +1,5 @@
+.env
+
 /script
 .DS_Store
 package-lock.json

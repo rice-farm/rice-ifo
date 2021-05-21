@@ -1,19 +1,21 @@
+// SPDX-License-Identifier: MIT
+
 pragma solidity 0.6.12;
 
-import '@pantherswap/panther-swap-lib/contracts/math/SafeMath.sol';
-import '@pantherswap/panther-swap-lib/contracts/token/BEP20/IBEP20.sol';
-import '@pantherswap/panther-swap-lib/contracts/token/BEP20/SafeBEP20.sol';
-import '@pantherswap/panther-swap-lib/contracts/utils/ReentrancyGuard.sol';
+import '@ricefarm/rice-lib/contracts/math/SafeMath.sol';
+import '@ricefarm/rice-lib/contracts/token/BEP20/IBEP20.sol';
+import '@ricefarm/rice-lib/contracts/token/BEP20/SafeBEP20.sol';
+import '@ricefarm/rice-lib/contracts/utils/ReentrancyGuard.sol';
 
 /**
- * @dev PantherSwap: Initial Panther Offering
+ * @dev RiceFarm: Initial Farm Offering
  *
- * Website: https://pantherswap.com
- * Dex: https://dex.pantherswap.com
- * Twitter: https://twitter.com/PantherSwap
+ * Website: https://ricefarm.fi
+ * Dex: https://swap.ricefarm.fi
+ * Twitter: https://twitter.com/BobaGroup
  *
  */
-contract IPO is ReentrancyGuard {
+contract IFO is ReentrancyGuard {
   using SafeMath for uint256;
   using SafeBEP20 for IBEP20;
 
@@ -68,23 +70,23 @@ contract IPO is ReentrancyGuard {
   }
 
   modifier onlyAdmin() {
-    require(msg.sender == adminAddress, "admin: wut?");
+    require(msg.sender == adminAddress, "only admin");
     _;
   }
 
   function setOfferingAmount(uint256 _offerAmount) public onlyAdmin {
-    require (block.number < startBlock, 'no');
+    require (block.number < startBlock, 'cannot change because IFO already started');
     offeringAmount = _offerAmount;
   }
 
   function setRaisingAmount(uint256 _raisingAmount) public onlyAdmin {
-    require (block.number < startBlock, 'no');
-    raisingAmount= _raisingAmount;
+    require (block.number < startBlock, 'cannot change because IFO already started');
+    raisingAmount = _raisingAmount;
   }
 
   function deposit(uint256 _amount) public {
-    require (block.number > startBlock && block.number < endBlock, 'not ipo time');
-    require (_amount > 0, 'need _amount > 0');
+    require (block.number > startBlock && block.number < endBlock, 'ipo not started');
+    require (_amount > 0, 'invalid deposit amount must be greater than 0');
     lpToken.safeTransferFrom(address(msg.sender), address(this), _amount);
     if (userInfo[msg.sender].amount == 0) {
       addressList.push(address(msg.sender));
@@ -95,12 +97,14 @@ contract IPO is ReentrancyGuard {
   }
 
   function harvest() public nonReentrant {
-    require (block.number > endBlock, 'not harvest time');
-    require (userInfo[msg.sender].amount > 0, 'have you participated?');
-    require (!userInfo[msg.sender].claimed, 'nothing to harvest');
+    require (block.number > endBlock, 'ipo has not ended');
+    require (userInfo[msg.sender].amount > 0, 'no participation amount found');
+    require (!userInfo[msg.sender].claimed, 'already claimed');
     uint256 offeringTokenAmount = getOfferingAmount(msg.sender);
     uint256 refundingTokenAmount = getRefundingAmount(msg.sender);
-    offeringToken.safeTransfer(address(msg.sender), offeringTokenAmount);
+    if (offeringTokenAmount > 0) {
+      offeringToken.safeTransfer(address(msg.sender), offeringTokenAmount);
+    }
     if (refundingTokenAmount > 0) {
       lpToken.safeTransfer(address(msg.sender), refundingTokenAmount);
     }
@@ -109,7 +113,7 @@ contract IPO is ReentrancyGuard {
   }
 
   function hasHarvest(address _user) external view returns(bool) {
-      return userInfo[_user].claimed;
+    return userInfo[_user].claimed;
   }
 
   // allocation 100000 means 0.1(10%), 1 meanss 0.000001(0.0001%), 1000000 means 1(100%)
@@ -146,7 +150,11 @@ contract IPO is ReentrancyGuard {
   function finalWithdraw(uint256 _lpAmount, uint256 _offerAmount) public onlyAdmin {
     require (_lpAmount < lpToken.balanceOf(address(this)), 'not enough token 0');
     require (_offerAmount < offeringToken.balanceOf(address(this)), 'not enough token 1');
-    lpToken.safeTransfer(address(msg.sender), _lpAmount);
-    offeringToken.safeTransfer(address(msg.sender), _offerAmount);
+    if(_offerAmount > 0) {
+      offeringToken.safeTransfer(address(msg.sender), _offerAmount);
+    }
+    if(_lpAmount > 0) {
+      lpToken.safeTransfer(address(msg.sender), _lpAmount);
+    }
   }
 }

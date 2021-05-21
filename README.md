@@ -1,4 +1,4 @@
-# Initial Panther Offering
+# Initial Farm Offering
 
 # Local Development
 
