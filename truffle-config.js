@@ -1,4 +1,22 @@
-var HDWalletProvider = require("truffle-hdwallet-provider");
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+require('dotenv').config()
+
+
+const mnemonic = process.env.MNEMONIC || 'start door favorite rule local display minute whale business destroy neglect indicate'
+const providerUrl = {
+  bsc: 'https://bsc-dataseed1.binance.org',
+  tbsc: 'https://data-seed-prebsc-1-s1.binance.org:8545'
+}
+
+const tbscProvider = new HDWalletProvider({
+  mnemonic,
+  providerOrUrl: providerUrl.tbsc
+})
+
+const bscProvider = new HDWalletProvider({
+  mnemonic,
+  providerOrUrl: providerUrl.bsc
+})
 
 module.exports = {
   // Uncommenting the defaults below
@@ -18,18 +36,13 @@ module.exports = {
      port: 8545,
      network_id: "*"
    },
-   bscTestnet:{
-     provider: function() {
-       // 0x25449306F743E252720cC03540773423513f5FEf
-       return new HDWalletProvider("3a4462606834f2362f7ddbb33100445b9729351dd6935294fa95cdc1cdbf9cf8", "https://data-seed-prebsc-1-s1.binance.org:8545")
-     },
+   tbsc:{
+     provider: tbscProvider,
      network_id: "97"
    },
 
-   bscMainnet: {
-     provider: function() {
-       return new HDWalletProvider("", "https://bsc-dataseed.binance.org")
-     },
+   bsc: {
+     provider: bscProvider,
      network_id: "56"
    },
 
@@ -43,7 +56,7 @@ module.exports = {
     'truffle-plugin-verify'
   ],
   api_keys: {
-    etherscan: ''
+    etherscan: '1J2SMZWKIBVRCMM8Q4TBEWRA4F3S2F6AJD'
   },
   compilers: {
     solc: {
