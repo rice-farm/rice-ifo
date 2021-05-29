@@ -91,7 +91,7 @@ contract IFOByProxy is ReentrancyGuard, Initializable {
   }
 
   function deposit(uint256 _amount) public {
-    require (block.number > startBlock && block.number < endBlock, 'ipo not started');
+    require (block.number > startBlock && block.number < endBlock, 'ifo not started');
     require (_amount > 0, 'invalid deposit amount must be greater than 0');
     lpToken.safeTransferFrom(address(msg.sender), address(this), _amount);
     if (userInfo[msg.sender].amount == 0) {
@@ -103,7 +103,7 @@ contract IFOByProxy is ReentrancyGuard, Initializable {
   }
 
   function harvest() public nonReentrant {
-    require (block.number > endBlock, 'ipo has not ended');
+    require (block.number > endBlock, 'ifo has not ended');
     require (userInfo[msg.sender].amount > 0, 'no participation amount found');
     require (!userInfo[msg.sender].claimed, 'already claimed');
     uint256 offeringTokenAmount = getOfferingAmount(msg.sender);
