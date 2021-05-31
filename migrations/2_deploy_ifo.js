@@ -21,11 +21,11 @@ module.exports = async (deployer) => {
   // const adminAddress = '0x35f16A46D3cf19010d28578A8b02DfA3CB4095a1';
 
   const lpToken = '0xc9dbefe1179f9bed3a0affaf124c0a641666d1b4'; // ts-bnb cake lp v1
-  const offeringToken = '0xeA2cE3C20184C1814D372756360F4Be7621A70Bb'; // rice
-  const startBlock = '9046543';
-  const endBlock = '9051543';
-  const offeringAmount = '100';
-  const raisingAmount = '100000';
+  const offeringToken = '0xF40B377F38FCCE1e3bFb4ddF5BbF1C8BB7E0dc8c'; // rice
+  const startBlock = '9356543';
+  const endBlock = '9556543';
+  const offeringAmount = '300000000000000000000';
+  const raisingAmount = '3000000000000000000'; // 000000000000000000
   const adminAddress = '0x87500968B83f3f7091B85ea58dAaBc815935b553'; // dev account
 
   await deployer.deploy(

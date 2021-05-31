@@ -150,8 +150,8 @@ contract IFO is ReentrancyGuard {
   }
 
   function finalWithdraw(uint256 _lpAmount, uint256 _offerAmount) public onlyAdmin {
-    require (_lpAmount < lpToken.balanceOf(address(this)), 'not enough token 0');
-    require (_offerAmount < offeringToken.balanceOf(address(this)), 'not enough token 1');
+    require (_lpAmount <= lpToken.balanceOf(address(this)), 'not enough lp tokens');
+    require (_offerAmount <= offeringToken.balanceOf(address(this)), 'not enough offering tokens');
     if(_offerAmount > 0) {
       offeringToken.safeTransfer(address(msg.sender), _offerAmount);
     }
