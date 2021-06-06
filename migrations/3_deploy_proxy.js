@@ -10,11 +10,11 @@ module.exports = async function (deployer, a, account) {
   await deployer.deploy(IFOByProxy)
 
   // offering amount 10000000
-  const num = 300 * Math.pow(10, 18)
+  const num = 10000000 * Math.pow(10, 18)
   const numAsHex = '0x' + num.toString(16)
 
   // raising amount 50000 LP's
-  const num1 = 3 * Math.pow(10, 18)
+  const num1 = 50000 * Math.pow(10, 18)
   const numAsHex1 = '0x' + num1.toString(16)
 
   // const proxyAdmin= '0x0F9399FC81DaC77908A2Dde54Bb87Ee2D17a3373';
@@ -28,10 +28,10 @@ module.exports = async function (deployer, a, account) {
   const proxyAdmin = '0x8Ba9dc38B005e7FB96F59d22358D088078c5d87f' // deployer
   const ifoAdmin = '0x87500968B83f3f7091B85ea58dAaBc815935b553' // dev
 
-  const lpToken = '0xc9dbefe1179f9bed3a0affaf124c0a641666d1b4' // ts-bnb
-  const offeringToken = '0xF40B377F38FCCE1e3bFb4ddF5BbF1C8BB7E0dc8c' // rice
-  const startBlock = '9275650'
-  const endBlock = '9306543'
+  const lpToken = '0xd0fDA937c512083091bA6e6193e421e6f125043f' // ts-bnb testnet: 0xc9dbefe1179f9bed3a0affaf124c0a641666d1b4
+  const offeringToken = '0xC4eEFF5aab678C3FF32362D80946A3f5De4a1861' // rice testnet: 0xF40B377F38FCCE1e3bFb4ddF5BbF1C8BB7E0dc8c
+  const startBlock = '8156543'
+  const endBlock = '8243000'
   const offeringAmount = numAsHex
   const raisingAmount = numAsHex1
   const adminAddress = ifoAdmin
