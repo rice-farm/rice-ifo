@@ -76,6 +76,11 @@ contract IFO is ReentrancyGuard {
     _;
   }
 
+  function setOfferingToken(IBEP20 _offeringToken) public onlyAdmin {
+    require (block.number < startBlock, 'cannot change because IFO already started');
+    offeringToken = _offeringToken;
+  }
+
   function setOfferingAmount(uint256 _offerAmount) public onlyAdmin {
     require (block.number < startBlock, 'cannot change because IFO already started');
     offeringAmount = _offerAmount;

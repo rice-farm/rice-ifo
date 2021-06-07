@@ -25,13 +25,21 @@ module.exports = async function (deployer, a, account) {
   // const startBlock = '2401100';
   // const endBlock = '2402320';
 
+  const RAISING_AMOUNT = '50000000000000000000000'
+
+  const START_BLOCK = '8156543'
+  const END_BLOCK = '8243000'
+
+  const TS_BNB_LP = '0xd0fDA937c512083091bA6e6193e421e6f125043f'
+  const RICE_TOKEN = '0xC4eEFF5aab678C3FF32362D80946A3f5De4a1861'
+
   const proxyAdmin = '0x8Ba9dc38B005e7FB96F59d22358D088078c5d87f' // deployer
   const ifoAdmin = '0x87500968B83f3f7091B85ea58dAaBc815935b553' // dev
 
-  const lpToken = '0xd0fDA937c512083091bA6e6193e421e6f125043f' // ts-bnb testnet: 0xc9dbefe1179f9bed3a0affaf124c0a641666d1b4
-  const offeringToken = '0xC4eEFF5aab678C3FF32362D80946A3f5De4a1861' // rice testnet: 0xF40B377F38FCCE1e3bFb4ddF5BbF1C8BB7E0dc8c
-  const startBlock = '8156543'
-  const endBlock = '8243000'
+  const lpToken = TS_BNB_LP // ts-bnb testnet: 0xc9dbefe1179f9bed3a0affaf124c0a641666d1b4
+  const offeringToken = RICE_TOKEN // rice testnet: 0xF40B377F38FCCE1e3bFb4ddF5BbF1C8BB7E0dc8c
+  const startBlock = START_BLOCK
+  const endBlock = END_BLOCK
   const offeringAmount = numAsHex
   const raisingAmount = numAsHex1
   const adminAddress = ifoAdmin
