@@ -5,7 +5,7 @@ require('dotenv').config()
 const mnemonic = process.env.MNEMONIC || 'start door favorite rule local display minute whale business destroy neglect indicate'
 const providerUrl = {
   bsc: 'https://bsc-dataseed1.binance.org',
-  tbsc: 'https://data-seed-prebsc-1-s1.binance.org:8545'
+  tbsc: 'https://data-seed-prebsc-2-s3.binance.org:8545'
 }
 
 const tbscProvider = new HDWalletProvider({
@@ -38,7 +38,8 @@ module.exports = {
    },
    tbsc:{
      provider: tbscProvider,
-     network_id: "97"
+     network_id: "97",
+     gasPrice: 20000000000
    },
 
    bsc: {
