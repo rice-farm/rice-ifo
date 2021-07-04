@@ -6,8 +6,8 @@
   "scripts": {
     "deploy": "yarn truffle migrate --network bsc",
     "deploy:test": "yarn truffle migrate --network tbsc",
-    "verify": "yarn truffle run verify IFO IFOByProxy IFOUpgradeProxy --network bsc",
-    "verify:test": "yarn truffle run verify IFO IFOByProxy IFOUpgradeProxy --network tbsc",
+    "verify": "yarn truffle run verify IFO IFOv2 --network bsc",
+    "verify:test": "yarn truffle run verify IFO IFOv2 --network tbsc",
     "migrate": "truffle migrate --network tbsc",
     "compile": "truffle compile --network tbsc",
     "test": "npx builder test"
