@@ -2214,7 +2214,7 @@ pragma solidity ^0.6.12;
  * @notice It is an upgrade of the original IFO model with 2 pools and
  * other PancakeProfile requirements.
  */
-contract IFOV2 is IIFOV2, ReentrancyGuard, Ownable {
+contract IFOV2Cake is IIFOV2, ReentrancyGuard, Ownable {
     using SafeMath for uint256;
     using SafeBEP20 for IBEP20;
 

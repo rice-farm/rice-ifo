@@ -18,4 +18,10 @@ The following assumes the use of `node@>=12`.
 
 ---
 
-Rice IFO: https://bscscan.com/address/0x01D9918ac9015bd0477dDF83319E06E7bC117528#readProxyContract
+### IFO
+Rice IFO: 0x01D9918ac9015bd0477dDF83319E06E7bC117528
+
+
+### IFOv2 
+testnet: 0xA428922D60071C0344ba0EDd62b0F5ca5726Ceb0
+
