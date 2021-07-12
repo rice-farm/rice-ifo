@@ -12,17 +12,17 @@ import "./IIFOv2.sol";
 
 /**
  * @title IFOV2
- * @notice It is an upgrade of the original IFO model with 2 pools and
- * other PancakeProfile requirements.
+ * @notice It is an upgrade of the original IFO model with 2 pools
+ * supporting 2 LPs and other Fuzion requirements.
  */
 contract IFOv2 is IIFOv2, ReentrancyGuard, Ownable {
     using SafeMath for uint256;
     using SafeBEP20 for IBEP20;
 
-    // The LP token used
+    // The LP token used in pool 0 (TS)
     IBEP20 public lpToken;
 
-    // The other LP token used
+    // The other LP token used in pool 1 (RICE)
     IBEP20 public lpToken2;
 
     // The offering token
@@ -279,7 +279,9 @@ contract IFOv2 is IIFOv2, ReentrancyGuard, Ownable {
         _poolInformation[_pid].raisingAmountPool = _raisingAmountPool;
         _poolInformation[_pid].limitPerUserInLP = _limitPerUserInLP;
         _poolInformation[_pid].hasTax = _hasTax;
-        _poolInformation[_pid].lpToken = _pid==0 ? lpToken : lpToken2;
+
+        // lpToken (ts) for pool 0 and lpToken2 (rice) for pool 1
+        _poolInformation[_pid].lpToken = _pid == 0 ? lpToken : lpToken2;
 
         emit PoolParametersSet(_offeringAmountPool, _raisingAmountPool, _pid);
     }
